@@ -1,0 +1,180 @@
+.title {
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(216, 64, 64);
+}
+
+.random {
+    top: auto;
+}
+
+.center {
+    margin: 0 auto;
+    border: 2px solid rgb(211, 102, 102);
+    width: 90%;
+    height: 450px;
+    max-width: 411px;
+    max-height: 731px;
+}
+
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+}
+
+.algo-menu, .size-menu, .speed-menu {
+    width: 100%;
+    min-width: 9ch;
+    max-width: 19ch;
+    padding: 0.25em 0.5em;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: rgb(142, 135, 214);
+}
+
+.navbar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 16px;
+    min-height: 60px;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgb(0, 0, 255);
+    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+}
+.navbar .options {
+    text-align: center;
+}
+
+.navbar a {
+    outline: none;
+    cursor: pointer;
+    color: #0a0a0c;
+    font-weight: bold;
+    padding: 13px 13px;
+    text-decoration: none;
+}
+.navbar #menu {
+    margin-top: 15px;
+    width: 150px;
+    height: 25px;
+    outline: none;
+}
+.navbar > a:hover {
+    color: #c75b29;
+}
+
+.navbar input {
+    height: 20px !important;
+}
+
+html, body {
+    top: 0;
+    margin: 0;
+    width: auto;
+    min-height: 95vh;
+    font-family: 'Fira Code', monospace;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    bottom: 20px !important;
+    margin-top: auto;
+    text-align: center;
+    position: relative;
+}
+
+.link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3b1bb1;
+}
+
+#menu, #random, #start {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.array {
+    display: flex;
+    align-items: flex-start;
+    min-height: 80vh;
+    height: 40vh;
+    padding: 1rem;
+    flex-direction: row;
+}
+
+.cell {
+    display: flex;
+    align-items: flex-start;
+    flex: 0.5;
+    width: 0.000001%;
+    margin: 1px;
+    background-color: #D6D6D6;
+    resize: horizontal;
+    position: relative;
+    transition: all .4s ease-in;
+}
+
+.cell.done {
+    background-color: #9CEC5B;
+    border-color: #9CEC5B;
+    color: white;
+    transition: all .4s ease-out;
+}
+
+.cell.visited {
+    border-color: #6184D8;
+    background-color: #6184D8;
+    color: white;
+    transition: .5s;
+}
+
+.cell.current {
+    border-color: #50C5B7;
+    background-color: #50C5B7;
+    color: white;
+    transition: all .4s ease-out;
+}
+
+.cell.min {
+    background-color: #FF1493;
+    border-color: #FF1493;
+    color: white;
+    transition: all .4s ease-out;
+}
+
+@media screen and (max-width: 900px) {
+    .navbar a, .navbar .options {
+        display: none;
+    }
+    .navbar a.icon {
+        float: right;
+        display: block;
+    }
+    .navbar.responsive {
+        position: relative;
+    }
+    .navbar.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navbar.responsive a, .navbar.responsive .options {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+}
