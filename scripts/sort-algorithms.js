@@ -1,5 +1,4 @@
 "use strict";
-
 class sortAlgorithms {
     constructor(time) {
         this.list = document.querySelectorAll(".cell");
@@ -10,33 +9,33 @@ class sortAlgorithms {
 
     // BUBBLE SORT
     BubbleSort = async () => {
-        for(let outPointer = 0 ; outPointer < this.size - 1 ; ++outPointer) {
-            for(let inPointer = 0 ; inPointer < this.size - outPointer - 1 ; ++inPointer) {
-                await this.help.mark(inPointer);
-                await this.help.mark(inPointer+1);
-                if(await this.help.compare(inPointer, inPointer+1)) {
-                    await this.help.swap(inPointer, inPointer+1);
+        for(let i = 0 ; i < this.size - 1 ; ++i) {
+            for(let j = 0 ; j < this.size - i - 1 ; ++j) {
+                await this.help.mark(j);
+                await this.help.mark(j+1);
+                if(await this.help.compare(j, j+1)) {
+                    await this.help.swap(j, j+1);
                 }
-                await this.help.unmark(inPointer);
-                await this.help.unmark(inPointer+1);
+                await this.help.unmark(j);
+                await this.help.unmark(j+1);
             }
-            this.list[this.size - outPointer - 1].setAttribute("class", "cell done");
+            this.list[this.size - i - 1].setAttribute("class", "cell done");
         }
         this.list[0].setAttribute("class", "cell done");
     }
 
     // INSERTION SORT
     InsertionSort = async () => {
-        for(let outPointer = 0 ; outPointer < this.size - 1 ; ++outPointer) {
-            let inPointer = outPointer;
-            while(inPointer >= 0 && await this.help.compare(inPointer, inPointer+1)) {
-                await this.help.mark(inPointer);
-                await this.help.mark(inPointer+1);
+        for(let i = 0 ; i < this.size - 1 ; ++i) {
+            let j = i;
+            while(j >= 0 && await this.help.compare(j, j+1)) {
+                await this.help.mark(j);
+                await this.help.mark(j+1);
                 await this.help.pause();
-                await this.help.swap(inPointer, inPointer+1);
-                await this.help.unmark(inPointer);
-                await this.help.unmark(inPointer+1);
-                inPointer -= 1;
+                await this.help.swap(j, j+1);
+                await this.help.unmark(j);
+                await this.help.unmark(j+1);
+                j -= 1;
             }
         }
         for(let counter = 0 ; counter < this.size ; ++counter) {
@@ -46,24 +45,24 @@ class sortAlgorithms {
 
     // SELECTION SORT
     SelectionSort = async () => {
-        for(let outPointer = 0 ; outPointer < this.size ; ++outPointer) {
-            let minIndex = outPointer;
-            for(let inPointer = outPointer ; inPointer < this.size ; ++inPointer) {
+        for(let i = 0 ; i < this.size ; ++i) {
+            let minIndex = i;
+            for(let j = i ; j < this.size ; ++j) {
                 await this.help.markSpl(minIndex);
-                await this.help.mark(inPointer);
-                if(await this.help.compare(minIndex, inPointer)) {
+                await this.help.mark(j);
+                if(await this.help.compare(minIndex, j)) {
                     await this.help.unmark(minIndex);
-                    minIndex = inPointer;
+                    minIndex = j;
                 }
-                await this.help.unmark(inPointer);
+                await this.help.unmark(j);
                 await this.help.markSpl(minIndex);
             }
             await this.help.mark(minIndex);
-            await this.help.mark(outPointer);
+            await this.help.mark(i);
             await this.help.pause();
-            await this.help.swap(minIndex, outPointer);
+            await this.help.swap(minIndex, i);
             await this.help.unmark(minIndex);
-            this.list[outPointer].setAttribute("class", "cell done");
+            this.list[i].setAttribute("class", "cell done");
         }
     }
 
@@ -86,49 +85,49 @@ class sortAlgorithms {
 
     Merge = async (start, mid, end) => {
         let newList = new Array();
-        let frontCounter = start;
-        let midCounter = mid + 1;
+        let frontcounter = start;
+        let midcounter = mid + 1;
         
-        while(frontCounter <= mid && midCounter <= end) {
-            let Fval = Number(this.list[frontCounter].getAttribute("value"));
-            let Sval = Number(this.list[midCounter].getAttribute("value"));
-            if(Fval >= Sval) {
-                newList.push(Sval);
-                ++midCounter;
+        while(frontcounter <= mid && midcounter <= end) {
+            let fvalue = Number(this.list[frontcounter].getAttribute("value"));
+            let svalue = Number(this.list[midcounter].getAttribute("value"));
+            if(fvalue >= svalue) {
+                newList.push(svalue);
+                ++midcounter;
             }
             else {
-                newList.push(Fval);
-                ++frontCounter;
+                newList.push(fvalue);
+                ++frontcounter;
             }
         }
-        while(frontCounter <= mid) {
-            newList.push(Number(this.list[frontCounter].getAttribute("value")));
-            ++frontCounter;
+        while(frontcounter <= mid) {
+            newList.push(Number(this.list[frontcounter].getAttribute("value")));
+            ++frontcounter;
         }
-        while(midCounter <= end) {
-            newList.push(Number(this.list[midCounter].getAttribute("value")));
-            ++midCounter;
+        while(midcounter <= end) {
+            newList.push(Number(this.list[midcounter].getAttribute("value")));
+            ++midcounter;
         }
 
-        for(let counter = start ; counter <= end ; ++counter) {
-            this.list[counter].setAttribute("class", "cell current");
+        for(let c = start ; c <= end ; ++c) {
+            this.list[c].setAttribute("class", "cell current");
         }
-        for(let counter = start, point = 0 ; counter <= end && point < newList.length; 
-            ++counter, ++point) {
+        for(let c = start, point = 0 ; c <= end && point < newList.length; 
+            ++c, ++point) {
                 await this.help.pause();
-                this.list[counter].setAttribute("value", newList[point]);
-                this.list[counter].style.height = `${3.5*newList[point]}px`;
+                this.list[c].setAttribute("value", newList[point]);
+                this.list[c].style.height = `${3.5*newList[point]}px`;
         }
-        for(let counter = start ; counter <= end ; ++counter) {
-            this.list[counter].setAttribute("class", "cell");
+        for(let c = start ; c <= end ; ++c) {
+            this.list[c].setAttribute("class", "cell");
         }
     }
 
     // QUICK SORT
     QuickSort = async () => {
         await this.QuickDivider(0, this.size-1);
-        for(let counter = 0 ; counter < this.size ; ++counter) {
-            this.list[counter].setAttribute("class", "cell done");
+        for(let c = 0 ; c < this.size ; ++c) {
+            this.list[c].setAttribute("class", "cell done");
         }
     }
 
@@ -142,22 +141,22 @@ class sortAlgorithms {
 
     Partition = async (start, end) => {
         let pivot = this.list[end].getAttribute("value");
-        let prevIndex = start - 1;
+        let prev_index = start - 1;
 
         await this.help.markSpl(end);
-        for(let counter = start ; counter < end ; ++counter) {
-            let currValue = Number(this.list[counter].getAttribute("value"));
-            await this.help.mark(counter);
+        for(let c = start ; c < end ; ++c) {
+            let currValue = Number(this.list[c].getAttribute("value"));
+            await this.help.mark(c);
             if(currValue < pivot) {
-                prevIndex += 1;
-                await this.help.mark(prevIndex);
-                await this.help.swap(counter, prevIndex);
-                await this.help.unmark(prevIndex);
+                prev_index += 1;
+                await this.help.mark(prev_index);
+                await this.help.swap(c, prev_index);
+                await this.help.unmark(prev_index);
             }
-            await this.help.unmark(counter);
+            await this.help.unmark(c);
         }
-        await this.help.swap(prevIndex+1, end);
+        await this.help.swap(prev_index+1, end);
         await this.help.unmark(end);
-        return prevIndex + 1;
+        return prev_index + 1;
     }
 };

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="icon" type="image/ico" href="favicon.ico"> -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="./css/style.css">
     <title>Sorting visualizer</title>
 </head>
 <body>
+    <h1 class="title"><a class="title" href="">Sorting visualizer</a></h1>
     <div class="navbar" id="navbar">
-        <a class="title" href="">Sorting visualizer</a>
-        <a class="random" onclick="RenderScreen()">Generate array</a>
+        <a id="random" onclick="RenderScreen()">Generate array</a>
         <span class="options">
             <select name="select sort algorithm" id="menu" 
                 class="algo-menu">
@@ -52,8 +52,8 @@
             </select>
         </span>
         <a class="start">SORT</a>
+        <a class="icon"><i class="fa fa-bars"></i></a>
     </div>
-    <br />
     <div class="center">
         <div class="frame" id="box">
             <div class="array"></div>
@@ -61,10 +61,14 @@
     </div>
     <footer class="footer">
         <p>
-            Created with <i class="fa fa-heart" style="color: #2a21a7"></i> by
-            <a href="" target="_blank" class="link">
-                Dharshak
+            Created with <i class="fa fa-heart" style="color: #eb2c13"></i> by dharshak 
+            <br /><br />
+            <a href="https://www.linkedin.com/in/dharshakch97/" target="_blank" class="link">
+                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
             </a>
+            <a href="https://github.com/dharshakch97" target="_blank" class="link">
+                <i class="fa fa-github" aria-hidden="true"></i>
+            </a>|
         </p>
     </footer>
     <script src="./scripts/app.js"></script>

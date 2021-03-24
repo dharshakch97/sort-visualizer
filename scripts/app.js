@@ -1,5 +1,4 @@
 "use strict";
-
 const start = async () => {
     let algoValue = Number(document.querySelector(".algo-menu").value);
     let speedValue = Number(document.querySelector(".speed-menu").value);
@@ -12,40 +11,26 @@ const start = async () => {
         return;
     }
 
-    let algorithm = null;
-    if(algoValue <= 6) {
-        algorithm = new sortAlgorithms(speedValue);
-    }
-
-    if(algoValue === 1) {
+    let algorithm = new sortAlgorithms(speedValue);
+    if(algoValue === 1)
         await algorithm.BubbleSort();
-    }
-    if(algoValue === 2) {
+    if(algoValue === 2)
         await algorithm.SelectionSort();
-    }
-    if(algoValue === 3) {
+    if(algoValue === 3)
         await algorithm.InsertionSort();
-    }
-    if(algoValue === 4) {
+    if(algoValue === 4)
         await algorithm.MergeSort();
-    }
-    if(algoValue === 5) {
+    if(algoValue === 5)
         await algorithm.QuickSort();
-    }
 };
 
 const RenderScreen = async () => {
     let algoValue = Number(document.querySelector(".algo-menu").value);
-    if(algoValue <= 6) {
-        await RenderList();
-    }
+    await RenderList();
 }
 
 const RenderList = async () => {
     let sizeValue = Number(document.querySelector(".size-menu").value);
-    if(sizeValue === 0) {
-        sizeValue = 0;
-    }
     await clearScreen();
     
     let list = await randomList(sizeValue);
@@ -62,9 +47,6 @@ const RenderList = async () => {
 
 const RenderArray = async (sorted) => {
     let sizeValue = Number(document.querySelector(".size-menu").value);
-    if(sizeValue === 0) {
-        sizeValue = 0;
-    }
     await clearScreen();
 
     let list = await randomList(sizeValue);
@@ -110,6 +92,7 @@ const response = () => {
     }
 };
 
+document.querySelector(".icon").addEventListener("click", response)
 document.querySelector(".start").addEventListener("click", start);
 document.querySelector(".size-menu").addEventListener("change", RenderScreen);
 document.querySelector(".algo-menu").addEventListener("change", RenderScreen);
