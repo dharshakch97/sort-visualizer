@@ -53,16 +53,16 @@ const RenderArray = async (sorted) => {
     if(sorted) list.sort((a, b) => a - b);
 
     const arrayNode = document.querySelector('.array');
-    const Wrapper = document.createElement('div'); 
-    Wrapper.className = 's-array';
+    const divnode = document.createElement('div'); 
+    divnode.className = 's-array';
 
     for(const element of list) {
-        const node = document.createElement('div');
-        node.className = 's-cell';
-        node.innerText = element;
-        Wrapper.appendChild(node);
+        const dnode = document.createElement('div');
+        dnode.className = 's-cell';
+        dnode.innerText = element;
+        divnode.appendChild(dnode);
     }
-    arrayNode.appendChild(Wrapper);
+    arrayNode.appendChild(divnode);
 }
 
 const randomList = async (Length) => {
