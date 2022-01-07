@@ -1,3 +1,7 @@
+:root {
+  --primary-color: #1abc9c;
+  --secondary-color: #16a085;
+}
 * {
   /* Below is the standard CSS code one should add to get rid of default margins and padding which most of tge HTML elements have */
   margin: 0;
@@ -18,7 +22,7 @@ body {
 
 /* Title CSS */
 .title {
-  background-color: #1abc9c;
+  background-color: var(--primary-color);
   text-align: center;
   font-size: 1.2em;
   padding-block: 0.5em;
@@ -36,7 +40,7 @@ body {
   font-size: 16px;
   min-height: 70px;
   padding-block: 0.6em;
-  background-color: #16a085;
+  background-color: var(--secondary-color);
   transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .navbar a {
